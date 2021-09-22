@@ -1,14 +1,8 @@
 const inquirer = require('inquirer');
-//const fs = require('fs');
-//const generatePage = require('./src/page-template');
+const fs = require('fs');
+const generatePage = require('./src/page-template');
 
-//const pageHTML = generatePage(name, github);
 
-//fs.writeFile('./index.html', pageHTML, err => {
-//  if (err) throw err;
-
-//  console.log('Portfolio complete! Check out index.html to see the output!');
-//});
 const promptUser = () => {
     return inquirer.prompt([
       {
@@ -70,7 +64,7 @@ const promptUser = () => {
             if (projectInput) {
               return true;
             } else {
-              console.log('Please enter your name!');
+              console.log('Please enter your project name!');
               return false;
             }
         }
@@ -83,7 +77,7 @@ const promptUser = () => {
             if (descriptionInput) {
               return true;
             } else {
-              console.log('Please enter your name!');
+              console.log('Please enter your project description!');
               return false;
             }
         }
@@ -102,7 +96,7 @@ const promptUser = () => {
             if (linkInput) {
               return true;
             } else {
-              console.log('Please enter your name!');
+              console.log('Please enter the link to your project!');
               return false;
             }
         }
@@ -135,5 +129,10 @@ const promptUser = () => {
   promptUser()
   .then(promptProject)
   .then(portfolioData => {
-    console.log(portfolioData);
+    const pageHTML = generatePage();
+
+   // fs.writeFile('./index.html', pageHTML, err => {
+       // if (err) throw err;
+        //    console.log('Portfolio complete! Check out index.html to see the output!');
+        //});
   });
