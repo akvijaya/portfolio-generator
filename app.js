@@ -134,7 +134,7 @@ const promptUser = () => {
   promptUser()
   .then(promptProject)
   .then(portfolioData => {
-    const pageHTML = generatePage();
+    const pageHTML = generatePage(portfolioData);
 
     fs.writeFile('./index.html', pageHTML, err => {
       if (err) throw err;
